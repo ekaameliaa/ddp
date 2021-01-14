@@ -29,9 +29,7 @@ while True:
         setoran_awal = int(input('Masukan setoran awal: '))
         norek = "REK" + ''.join(random.choice(string.digits) for _ in range(3))
         print('Pembukaan rekening dengan nomor', norek, 'atas nama', name, 'berhasil')
-        #nasabah = [norek, name, str(setoran_awal)]
         file_n = open('nasabah.txt', 'a+')
-        #file_n.write('\n' + ','.join(nasabah))
         file_n.write(norek + ',' + name + ',' + str(setoran_awal) + '\n')
         file_n.close()
         print()
@@ -50,7 +48,6 @@ while True:
                     i[2] += nominal
                     file_n = open('nasabah.txt', 'w')
                     file_n.write('\n'.join(map(lambda x: ','.join(map(str, x)),  dataNasabah)))
-                    #file_n.write(no_rek + ',' + i[1] + ',' + str(i[2] + nominal) + '\n')
                     file_n.close() 
                     break          
         else:
@@ -106,18 +103,14 @@ while True:
                                 file_n = open('nasabah.txt', 'w')
                                 file_n.write('\n'.join(map(lambda x: ','.join(map(str, x)),  dataNasabah)))
                                 Transfer = "TRF" + ''.join(random.choice(string.digits) for i in range(3))
-                                #transfer = [noTransfer, rekSumber,
-                                            #rekTujuan, str(nomTransfer)]
                                 print("Transfer sebesar", nom_Transfer, "dari rekening",
                                     rekSumber, "ke rekening", rekTujuan, "berhasil.")
                                 file_n = open('transfer.txt', 'a+')
                                 file_n.write(Transfer + ',' + rekSumber + ',' + rekTujuan + ',' + str(nom_Transfer) + '\n')
                                 file_n.close()
                                 break
-        #elif rekSumber and rekTujuan not in dataNasabah2:
-            #print('Nomor rekening sumber tidak terdaftar. Transfer gagal')
         else: 
-            print('Nomor rekening sumber dan rekening tujuan tidak terdaftar. Transfer gagal')           
+            print('Nomor rekening sumber atau rekening tujuan tidak terdaftar. Transfer gagal')           
         dataNasabah.clear()
         dataNasabah2.clear()
         print()
@@ -148,7 +141,7 @@ while True:
             print("Tidak ada data yang ditampilkan")
         print()
         menu()
-    elif menu == "6":
+    elif pilihan == "6":
         print("Terima kasih atas kunjungan Anda...")
         break
 
